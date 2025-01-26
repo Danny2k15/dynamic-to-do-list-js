@@ -1,9 +1,15 @@
 // Ensure the DOM is fully loaded before executing the script
 document.addEventListener('DOMContentLoaded', () => {
     // Select DOM elements
-    const addButton = document.getElementById('add-task'); // "Add Task" button
-    const taskInput = document.getElementById('task-input'); // Input field for tasks
-    const taskList = document.getElementById('task-list'); // Unordered list to display tasks
+    // Select the "Add Task" button and store it in a constant named addButton
+const addButton = document.getElementById('add-task');
+
+// Select the input field where users enter tasks and store it in a constant named taskInput
+const taskInput = document.getElementById('task-input');
+
+// Select the unordered list that will display the tasks and store it in a constant named taskList
+const taskList = document.getElementById('task-list');
+    
 
     // Define the addTask function
     function addTask() {
