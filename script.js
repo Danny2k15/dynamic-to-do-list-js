@@ -13,39 +13,38 @@ const taskList = document.getElementById('task-list-btn');
 
     // Define the addTask function
     function addTask() {
-        // Retrieve and trim the input value
-        const taskText = taskInput.value.trim();
-
-        // Check if the input is empty
-        if (taskText === "") {
-            alert("Please enter a task!");
-            return;
+        // Get the task input value
+        const taskText = taskInput.value.trim(); // Remove extra spaces
+    
+        // Check if the task input is not empty
+        if (taskText !== "") {
+            // Create a new li element
+            const newTask = document.createElement("li");
+    
+            // Set the text content of the li element to the task text
+            newTask.textContent = taskText;
+    
+            // Create a new remove button
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.classList.add("remove-btn");
+    
+            // Add an onclick event to remove the li element when the button is clicked
+            removeButton.onclick = function() {
+                taskList.removeChild(newTask);
+            };
+    
+            // Append the remove button to the li element
+            newTask.appendChild(removeButton);
+    
+            // Append the li element to the task list
+            taskList.appendChild(newTask);
+    
+            // Clear the task input field
+            taskInput.value = "";
         }
-
-        // Create a new list item (li) element for the task
-        const li = document.createElement('li');
-        li.textContent = taskText;
-
-        // Create a remove button for the task
-        const removeButton = document.createElement('button');
-        removeButton.textContent = "Remove";
-        removeButton.className = 'remove-btn';
-
-        // Add an event listener to the remove button
-        removeButton.onclick = () => {
-            taskList.removeChild(li); // Remove the task when the button is clicked
-        };
-
-        // Append the remove button to the list item
-        li.appendChild(removeButton);
-
-        // Append the list item to the task list
-        taskList.appendChild(li);
-
-        // Clear the input field
-        taskInput.value = "";
-    }
-
+    }    
+    
     // Add an event listener to the "Add Task" button
     addButton.addEventListener('click', addTask);
 
